@@ -48,7 +48,7 @@ def tokenize(text, current_step=1, total_step=1, AND_block=0, simple_input=False
         from modules import sd_hijack, prompt_parser
         from functools import reduce
         _, prompt_flat_list, _ = prompt_parser.get_multicond_prompt_list([text])
-        prompt_schedules = prompt_parser.get_learned_conditioning_prompt_schedules(prompt_flat_list, total_step)
+        prompt_schedules = prompt_parser.get_learned_conditioning_prompt_schedules(prompt_flat_list, int(total_step))
         flat_prompts = reduce(lambda list1, list2: list1+list2, prompt_schedules)
         prompts = [prompt_text for step, prompt_text in flat_prompts]
 
